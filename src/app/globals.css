@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0B1F3A;
+  --navy-deep: #081626;
+  --ivory: #F7F3EA;
+  --ivory-soft: #FBF9F4;
+  --gold: #B8945F;
+  --gold-light: #D4BD93;
+  --charcoal: #1A1A1A;
+  --warm-gray: #8C8579;
+  --rule: #D9D2C2;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-ivory: var(--ivory);
+  --color-ivory-soft: var(--ivory-soft);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-charcoal: var(--charcoal);
+  --color-warm-gray: var(--warm-gray);
+  --color-rule: var(--rule);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-serif), Cormorant Garamond, Georgia, serif;
+  --font-sans: var(--font-sans), Inter, -apple-system, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+  line-height: 1.6;
 }
+
+/* Custom tracked class for letter-spacing and style */
+.tracked {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Decorative lines around eyebrow text */
+.eyebrow-divider {
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+}
+
+.eyebrow-divider::before,
+.eyebrow-divider::after {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+/* Feature mark Roman numeral circle indicators */
+.feature-mark {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+}
+

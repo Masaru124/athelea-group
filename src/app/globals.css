@@ -1,26 +1,24 @@
 @import "tailwindcss";
 
 :root {
+  --midnight: #030A16;
+  --navy-deep: #061224;
   --navy: #0B1F3A;
-  --navy-deep: #081626;
   --ivory: #F7F3EA;
-  --ivory-soft: #FBF9F4;
+  --steel-blue: #A4B3C6;
   --gold: #B8945F;
   --gold-light: #D4BD93;
-  --charcoal: #1A1A1A;
-  --warm-gray: #8C8579;
-  --rule: #D9D2C2;
+  --rule: rgba(217, 210, 194, 0.12);
 }
 
 @theme {
-  --color-navy: var(--navy);
+  --color-midnight: var(--midnight);
   --color-navy-deep: var(--navy-deep);
+  --color-navy: var(--navy);
   --color-ivory: var(--ivory);
-  --color-ivory-soft: var(--ivory-soft);
+  --color-steel-blue: var(--steel-blue);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-charcoal: var(--charcoal);
-  --color-warm-gray: var(--warm-gray);
   --color-rule: var(--rule);
 
   --font-serif: var(--font-serif), Cormorant Garamond, Georgia, serif;
@@ -28,18 +26,18 @@
 }
 
 body {
-  background: var(--ivory);
-  color: var(--charcoal);
+  background: var(--midnight);
+  color: var(--steel-blue);
   font-family: var(--font-sans);
   line-height: 1.6;
 }
 
 /* Custom tracked class for letter-spacing and style */
 .tracked {
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Decorative lines around eyebrow text */
@@ -53,18 +51,27 @@ body {
 .eyebrow-divider::after {
   content: "";
   display: inline-block;
-  width: 28px;
+  width: 32px;
   height: 1px;
-  background: var(--gold);
+  background: linear-gradient(90deg, transparent, var(--gold));
   vertical-align: middle;
-  margin: 0 12px;
+}
+
+.eyebrow-divider::before {
+  background: linear-gradient(-90deg, transparent, var(--gold));
+  margin-right: 14px;
+}
+
+.eyebrow-divider::after {
+  margin-left: 14px;
 }
 
 /* Feature mark Roman numeral circle indicators */
 .feature-mark {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--gold);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(184, 148, 95, 0.3);
+  background: rgba(11, 31, 58, 0.5);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -72,6 +79,95 @@ body {
   color: var(--gold);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 17px;
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+/* Custom styled range slider for ROI calculator */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: rgba(217, 210, 194, 0.15);
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(184, 148, 95, 0.5);
+  transition: transform 0.15s ease-in-out, background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: var(--gold-light);
+  box-shadow: 0 0 14px rgba(212, 189, 147, 0.7);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(184, 148, 95, 0.5);
+  transition: transform 0.15s ease-in-out, background 0.15s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.25);
+  background: var(--gold-light);
+  box-shadow: 0 0 14px rgba(212, 189, 147, 0.7);
+}
+
+/* Smooth scroll behaviors */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--midnight);
+}
+
+/* Selection highlight colors */
+::selection {
+  background: var(--gold);
+  color: var(--midnight);
+}
+
+
 
